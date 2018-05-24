@@ -13,10 +13,38 @@
 </head>
 
 <body class="pace-done">
-<!-- <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> -->
-<div id="container" class="cls-container">
-  <%= yield %>
-</div>
+
+  <div id="container" class="cls-container">
+    <%= yield %>
+  </div>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          <% if notice %>
+
+          $(function() {
+              $.niftyNoty({
+                  type: 'warning',
+                  container: 'floating',
+                  message: '<%= notice %>',
+                  closeBtn: false,
+                  timer: 1500
+              });
+          });
+          <% end %>
+
+          <% if alert %>
+          $(function() {
+              $.niftyNoty({
+                  type: 'danger',
+                  container: 'floating',
+                  message: '<%= alert %>',
+                  closeBtn: false,
+                  timer: 1500
+              });
+          });
+          <% end %>
+      });
+
+  </script>
 </body>
 </html>
